@@ -22,4 +22,7 @@ RUN cd cms && ./setup.py install
 
 COPY ./cms.conf /usr/local/etc/cms.conf
 
-CMD cmsDropDB -y && cmsInitDB && cmsLogService
+CMD cmsDropDB -y &&\
+    cmsInitDB &&\
+    cmsAddAdmin -p admin admin &&\
+    cmsLogService
