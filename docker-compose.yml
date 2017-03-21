@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  db:
+    build:
+      context: ./db
+
+  log:
+    build:
+      context: ./log
+    depends_on:
+      - db
+  
+  cms:
+    build:
+      context: .
+    depends_on:
+      - db
+      - log
+    ports:
+      - 8888:8888
+      - 8889:8889
+    volumes:
+      - .:/app
+  

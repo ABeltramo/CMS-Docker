@@ -1,0 +1,8 @@
+name: "TestTask"
+description: "Contest to test CMS docker"
+tasks:
+  - "baht"
+  - "fuga"
+  - "salti"
+  - "scuola"
+token_mode: infinite
