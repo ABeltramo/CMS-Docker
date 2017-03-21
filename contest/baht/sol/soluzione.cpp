@@ -1,1 +1,0 @@
-sol_ste.cpp

@@ -27,4 +27,6 @@ COPY ./log/cms.conf /usr/local/etc/cms.conf
 RUN mkdir contest
 COPY ./contest/ contest/
 
-CMD cmsImportContest -i contest/ && cmsResourceService -a
+CMD cmsAddAdmin -p admin admin &&\
+    cmsImportContest -i contest/ &&\
+    cmsResourceService -a 1

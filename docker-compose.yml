@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   db:
@@ -20,6 +20,4 @@ services:
     ports:
       - 8888:8888
       - 8889:8889
-    volumes:
-      - .:/app
-  
+    restart: always
