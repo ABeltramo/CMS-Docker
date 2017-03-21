@@ -22,6 +22,8 @@ RUN cd cms && ./setup.py install
 
 COPY ./cms.conf /usr/local/etc/cms.conf
 
+EXPOSE 29000
+
 CMD cmsDropDB -y &&\
     cmsInitDB &&\
     cmsAddAdmin -p admin admin &&\
