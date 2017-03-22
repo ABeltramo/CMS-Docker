@@ -16,6 +16,7 @@ services:
   cms:
     build:
       context: .
+    privileged: yes
     depends_on:
       log:
         condition: service_healthy

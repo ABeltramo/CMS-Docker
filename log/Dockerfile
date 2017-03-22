@@ -12,13 +12,12 @@ RUN apt-get install -y git sudo netcat
 
 # INSTALLATION
 
-COPY ./cms/ cms/
+RUN git clone --recursive -b v1.3 https://github.com/cms-dev/cms.git
 RUN pip install --upgrade pip
-RUN cd cms && \
-	./prerequisites.py install --as-root
-RUN usermod -a -G cmsuser root
-RUN cd cms/ && pip2 install -r requirements.txt
-RUN cd cms && ./setup.py install
+RUN cd cms &&\
+    pip2 install -r requirements.txt &&\
+	./prerequisites.py install --as-root --no-conf -y &&\
+    python setup.py install
 
 COPY ./cms.conf /usr/local/etc/cms.conf
 
