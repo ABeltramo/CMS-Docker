@@ -24,6 +24,9 @@ COPY ./cms.conf /usr/local/etc/cms.conf
 
 EXPOSE 29000
 
+RUN apt-get install -y netcat
+HEALTHCHECK --interval=10s --timeout=1s --retries=5 CMD nc -z log 29000 || exit 1
+
 CMD cmsDropDB -y &&\
     cmsInitDB &&\
     cmsAddAdmin -p admin admin &&\

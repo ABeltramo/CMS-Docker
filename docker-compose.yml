@@ -4,6 +4,8 @@ services:
   db:
     build:
       context: ./db
+    volumes:
+      - postgres-db-volume:/data/postgres
 
   log:
     build:
@@ -15,9 +17,13 @@ services:
     build:
       context: .
     depends_on:
-      - db
-      - log
+      log:
+        condition: service_healthy
     ports:
       - 8888:8888
       - 8889:8889
+      - 8890:8890
     restart: always
+
+volumes:
+  postgres-db-volume:
