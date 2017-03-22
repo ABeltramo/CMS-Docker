@@ -8,11 +8,11 @@ RUN apt-get install -y build-essential openjdk-8-jre openjdk-8-jdk fpc \
 RUN apt-get install -y python-dev libpq-dev libcups2-dev libyaml-dev \
      libffi-dev python-pip
 # also needed
-RUN apt-get install -y git sudo
+RUN apt-get install -y git sudo netcat
 
 # INSTALLATION
 
-RUN git clone --recursive -b v1.3 https://github.com/cms-dev/cms.git
+COPY ./cms/ cms/
 RUN pip install --upgrade pip
 RUN cd cms && \
 	./prerequisites.py install --as-root
@@ -24,7 +24,6 @@ COPY ./cms.conf /usr/local/etc/cms.conf
 
 EXPOSE 29000
 
-RUN apt-get install -y netcat
 HEALTHCHECK --interval=10s --timeout=1s --retries=5 CMD nc -z log 29000 || exit 1
 
 CMD cmsDropDB -y &&\

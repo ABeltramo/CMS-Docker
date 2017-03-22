@@ -12,7 +12,7 @@ RUN apt-get install -y git sudo
 
 # INSTALLATION
 
-RUN git clone --recursive -b v1.3 https://github.com/cms-dev/cms.git
+COPY ./log/cms/ cms/
 RUN pip install --upgrade pip
 RUN cd cms && \
 	./prerequisites.py install --as-root
