@@ -15,7 +15,7 @@ services:
   
   cms:
     build:
-      context: .
+      context: ./main
     privileged: yes
     depends_on:
       log:
