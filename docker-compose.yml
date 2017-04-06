@@ -4,6 +4,10 @@ services:
   db:
     build:
       context: ./db
+    environment:
+      - POSTGRES_USER="cmsuser"
+      - POSTGRES_PASSWORD="your_password_here"
+      - POSTGRES_DB="cmsdb"
     volumes:
       - postgres-db-volume:/data/postgres
 
@@ -25,6 +29,8 @@ services:
       - 8889:8889
       - 8890:8890
     restart: always
+    volumes:
+      - ./main/contest:/tmp/contest/
 
 volumes:
   postgres-db-volume:

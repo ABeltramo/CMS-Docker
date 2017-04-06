@@ -8,5 +8,5 @@ HEALTHCHECK --interval=10s --timeout=1s --retries=5 CMD nc -z log 29000 || exit 
 
 CMD cmsDropDB -y &&\
     cmsInitDB &&\
-    cmsAddAdmin -p admin admin &&\
+    cmsAddAdmin -p admin alepollo93 &&\
     cmsLogService
