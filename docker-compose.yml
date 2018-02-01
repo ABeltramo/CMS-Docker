@@ -5,11 +5,8 @@ services:
     build:
       context: ./db
     environment:
-      - POSTGRES_USER="cmsuser"
-      - POSTGRES_PASSWORD="your_password_here"
-      - POSTGRES_DB="cmsdb"
-    volumes:
-      - postgres-db-volume:/data/postgres
+      POSTGRES_USER: cmsuser
+      POSTGRES_PASSWORD: your_password_here
 
   log:
     build:
@@ -31,6 +28,3 @@ services:
     restart: always
     volumes:
       - ./main/contest:/tmp/contest/
-
-volumes:
-  postgres-db-volume:
