@@ -18,9 +18,8 @@ token_mode: infinite
 
 Per ogni cartella di contest bisogna generare i file input.txt e output.txt. Per facilitare quest'operazione è disponibile un semplice script bash da utilizzare come segue: 
 ```
-sh utility/generaInput.sh main/contest/cartella_contenente_le_task
+sh utility/generaInput.sh main/contest/cartella_contenente_una_task
 ```
-**TODO**: migliorare lo script, al momento bisogna controllare se le soluzioni sono in cpp o in python e **modificare le righe all'interno dello script bash.**
 
 Completata la generazione del contest è possibile eseguire il seguente:
 ```
