@@ -43,7 +43,7 @@ risolutore="$1/sol/soluzione"
 if [ -f "$1/sol/soluzione.cpp" ]; then                  # CASO 1: file soluzione.cpp
   g++ -std=c++11 "$1/sol/soluzione.cpp" -o $risolutore
 elif [ -f "$1/sol/soluzione.c" ]; then                  # CASO 2: ci sono più soluzioni e c'è un file di link alla soluzione
-  g++ -std=c++11 "$1/sol/soluzione.c" -o $risolutore
+  gcc "$1/sol/soluzione.c" -o $risolutore
 else
   echo "Soluzione non trovata nella cartella $1/sol/"
   exit 1
@@ -65,5 +65,6 @@ do                                                        # Ciclo riga per riga
 done
 
 # Compile pdf in folder testo
-pdflatex -output-directory $1/testo $testo > $1/testo/consoleLog
+echo "Generazione PDF - Se non funziona utilizzare: https://github.com/algorithm-ninja/cmsbooklet"
+cd $1/testo && pdflatex testo.tex > consoleLog
 echo "Terminato!"
